@@ -1,6 +1,12 @@
-# electron-starter
+# Electron-Starter
 
-An Electron application with Svelte and TypeScript
+My own Electron Starter using the following:
+
+- Typescript
+- Svelte
+- Tailwind
+- DaisyUI
+- TRPC
 
 ## Recommended IDE Setup
 
