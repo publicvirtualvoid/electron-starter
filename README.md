@@ -1,4 +1,4 @@
-# autominer
+# electron-starter
 
 An Electron application with Svelte and TypeScript
 
