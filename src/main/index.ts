@@ -3,6 +3,7 @@ import { join } from 'path';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 import icon from '../../resources/icon.png?asset';
 import { createIPCHandler } from 'electron-trpc/main';
+import { router } from '@common/trpc-router';
 
 function createWindow() {
   // Create the browser window.

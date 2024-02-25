@@ -2,10 +2,6 @@ import { contextBridge } from 'electron';
 import { electronAPI } from '@electron-toolkit/preload';
 import { exposeElectronTRPC } from 'electron-trpc/main';
 
-process.once('loaded', async () => {
-  exposeElectronTRPC();
-});
-
 // Custom APIs for renderer
 const api = {};
 
@@ -13,6 +9,9 @@ const api = {};
 // renderer only if context isolation is enabled, otherwise
 // just add to the DOM global.
 if (process.contextIsolated) {
+  process.once('loaded', async () => {
+    exposeElectronTRPC();
+  });
   try {
     contextBridge.exposeInMainWorld('electron', electronAPI);
     contextBridge.exposeInMainWorld('api', api);
@@ -20,6 +19,7 @@ if (process.contextIsolated) {
     console.error(error);
   }
 } else {
+  console.error('Context not isolated!');
   // @ts-ignore (define in dts)
   window.electron = electronAPI;
   // @ts-ignore (define in dts)
